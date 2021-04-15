@@ -17,22 +17,24 @@ const createBoard = (n: number) =>
   [...Array(n)].map(() => [...Array(n)].map(() => null));
 
 export const useCheckWinner = (n: number) => {
-  const [winner, setWinner] = React.useState<CellOption>(null);
-  const [count, setCount] = React.useState<Record<string, number>>({});
+  const [winner, setWinner] = React.useState<CellOption | "draw">(null);
+  const [_count, setCount] = React.useState<Record<string, number>>({
+    totalCount: 0,
+  });
 
   const checkWinner = ({ row, col, turn }: CheckWinnerArgs) => {
     setCount((previousCount) => {
       const newCount = { ...previousCount };
+      newCount.totalCount += 1;
       // determine if we should increment or decrement
       const updater = turn === "X" ? 1 : -1;
 
-      // check if the key already exists on count object
       // if not initialise it
       const keys = [`row-${row}`, `col-${col}`];
 
       // check if up diagonal
       if (col + row === n - 1) {
-        keys.push("up"); 
+        keys.push("up");
       }
 
       // check if down diagonal
@@ -41,6 +43,7 @@ export const useCheckWinner = (n: number) => {
       }
 
       keys.forEach((key) => {
+        // check if the key already exists on count object
         if (!newCount[key]) {
           newCount[key] = 0;
         }
@@ -51,10 +54,17 @@ export const useCheckWinner = (n: number) => {
         // determin if anyone has won
         if (newCount[key] === n) {
           setWinner("X");
+          return newCount;
         }
 
         if (newCount[key] === -n) {
           setWinner("O");
+          return newCount;
+        }
+
+        if (newCount.totalCount === n * n) {
+          setWinner("draw");
+          return newCount;
         }
       });
 

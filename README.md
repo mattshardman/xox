@@ -25,4 +25,4 @@ The value of N is taken as an input from the user before the game round begins
 - [x] implement user interaction
 
 ## update hook
-- [ ] determining the winner
+- [x] determining the winner
