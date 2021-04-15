@@ -1,0 +1,32 @@
+.home {
+  display: grid;
+  grid-gap: 20px;
+  justify-items: center;
+}
+
+.title {
+    font-size: 60px;
+}
+
+.n {
+    display: flex;
+    border-radius: 4px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ddd;
+    height: 60px;
+    width: 60px;
+}
+
+.text {
+    font-size: 32px;
+}
+
+.button {
+  cursor: pointer;
+  border: none;
+  height: 40px;
+  width: 150px;
+  background: #2eb67d;
+  color: white;
+}
