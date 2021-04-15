@@ -9,7 +9,15 @@
 }
 
 .cell {
-    background: yellow;
+    height: 100%;
+    width: 100%; 
+}
+
+.button {
+    background: #ddd;
+    border: none;
+    font-size: 60px;
+    cursor: pointer;
     height: 100%;
     width: 100%; 
 }

@@ -9,13 +9,20 @@ interface Props {
 }
 
 export const Game: React.FC<Props> = ({ n }) => {
-  const { board } = useGame(n);
+  const { board, playMove } = useGame(n);
 
   return (
     <div>
       <Board n={n}>
         {board.map((row, rowI) =>
-          row.map((cell, colI) => <Cell key={`${rowI}-${colI}`}>{cell}</Cell>)
+          row.map((cell, colI) => (
+            <Cell
+              key={`${rowI}-${colI}`}
+              clickHandler={() => playMove({ row: rowI, col: colI })}
+            >
+              {cell}
+            </Cell>
+          ))
         )}
       </Board>
     </div>

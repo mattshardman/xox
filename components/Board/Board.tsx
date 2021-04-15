@@ -2,8 +2,18 @@ import React from "react";
 
 import styles from "./Board.module.css";
 
-export const Cell: React.FC = ({ children }) => {
-  return <div className={styles.cell}>{children}</div>;
+interface CellProps {
+  clickHandler: () => void;
+}
+
+export const Cell: React.FC<CellProps> = ({ children, clickHandler }) => {
+  return (
+    <div className={styles.cell}>
+      <button className={styles.button} onClick={clickHandler}>
+        {children}
+      </button>
+    </div>
+  );
 };
 
 interface BoardProps {
@@ -19,7 +29,11 @@ export const Board: React.FC<BoardProps> = ({ children, n }) => {
     }
   }, [n]);
 
-  return <div ref={ref} className={styles.board}>{children}</div>;
+  return (
+    <div ref={ref} className={styles.board}>
+      {children}
+    </div>
+  );
 };
 
 export default Board;
