@@ -9,7 +9,11 @@ interface CellProps {
 export const Cell: React.FC<CellProps> = ({ children, clickHandler }) => {
   return (
     <div className={styles.cell}>
-      <button className={styles.button} onClick={clickHandler}>
+      <button
+        className={styles.button}
+        disabled={!!children}
+        onClick={clickHandler}
+      >
         {children}
       </button>
     </div>
