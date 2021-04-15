@@ -36,18 +36,18 @@ export const useCheckWinner = (n: number) => {
         }
 
         // either increment or decrement the count property for both row and col
-        newCount[key] += updater; 
+        newCount[key] += updater;
 
         // determin if anyone has won
         if (newCount[key] === n) {
-          setWinner("X")
+          setWinner("X");
         }
 
         if (newCount[key] === -n) {
-          setWinner("O")
+          setWinner("O");
         }
       });
-      
+
       return newCount;
     });
   };
@@ -66,6 +66,7 @@ export const useGame = (n: number) => {
       const newBoard = [...current];
 
       setTurn((currentTurn) => {
+        checkWinner({ row, col, turn: currentTurn });
         newBoard[row][col] = currentTurn;
 
         if (currentTurn === "X") {
