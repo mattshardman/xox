@@ -19,10 +19,10 @@ The value of N is taken as an input from the user before the game round begins
 - [x] reset board
 
 ## creating the ui
-- [ ] create board Component
-- [ ] render the board
-- [ ] allow to it to have an arbitrary size
-- [ ] implement user interaction
+- [x] create board Component
+- [x] render the board
+- [x] allow to it to have an arbitrary size
+- [x] implement user interaction
 
 ## update hook
 - [ ] determining the winner
