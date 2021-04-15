@@ -7,9 +7,10 @@ The Tic-Tac-Toe board is not 3x3, but NxN
 The value of N is taken as an input from the user before the game round begins
 
 ## allow the user to set N
-- [ ] create home page
-- [ ] create a game page
-- [ ] link pages with query string
+- [x] create home page
+- [x] create a game page
+- [x] link pages with query string
+- [x] parse query string
 - [ ] allow user input
 
 ## custom hook
