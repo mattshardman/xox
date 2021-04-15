@@ -16,11 +16,12 @@ interface CheckWinnerArgs extends PlayMoveArgs {
 const createBoard = (n: number) =>
   [...Array(n)].map(() => [...Array(n)].map(() => null));
 
+const winnerInit = null;
+const countInit = { totalCount: 0 };
+
 export const useCheckWinner = (n: number) => {
-  const [winner, setWinner] = React.useState<CellOption | "draw">(null);
-  const [_count, setCount] = React.useState<Record<string, number>>({
-    totalCount: 0,
-  });
+  const [winner, setWinner] = React.useState<CellOption | "draw">(winnerInit);
+  const [_count, setCount] = React.useState<Record<string, number>>(countInit);
 
   const checkWinner = ({ row, col, turn }: CheckWinnerArgs) => {
     setCount((previousCount) => {
@@ -72,14 +73,19 @@ export const useCheckWinner = (n: number) => {
     });
   };
 
-  return { winner, checkWinner };
+  const resetWinner = () => {
+    setWinner(winnerInit)
+    setCount(countInit);
+  }
+
+  return { winner, checkWinner, resetWinner };
 };
 
 export const useGame = (n: number) => {
   const [turn, setTurn] = React.useState<"X" | "O">("X");
   const [board, setBoard] = React.useState<Board>([[]]);
 
-  const { winner, checkWinner } = useCheckWinner(n);
+  const { winner, checkWinner, resetWinner } = useCheckWinner(n);
 
   const playMove = ({ row, col }: PlayMoveArgs) => {
     setBoard((current) => {
@@ -103,6 +109,7 @@ export const useGame = (n: number) => {
   const reset = () => {
     const newBoard = createBoard(n);
     setBoard(newBoard);
+    resetWinner();
   };
 
   React.useEffect(() => {
