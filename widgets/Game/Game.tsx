@@ -1,17 +1,25 @@
 import React from "react";
 
-import { Board , Cell } from "components/Board";
+import { Board, Cell } from "components/Board";
 
 import { useGame } from "hooks";
 
-export const Game: React.FC = () => {
-  const { board } = useGame(3);
+interface Props {
+  n: number;
+}
 
-  return <div>
-    <Board>
-      <Cell />
-    </Board>
-  </div>;
+export const Game: React.FC<Props> = ({ n }) => {
+  const { board } = useGame(n);
+
+  return (
+    <div>
+      <Board n={n}>
+        {board.map((row, rowI) =>
+          row.map((cell, colI) => <Cell key={`${rowI}-${colI}`}>{cell}</Cell>)
+        )}
+      </Board>
+    </div>
+  );
 };
 
 export default Game;

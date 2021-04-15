@@ -7,7 +7,8 @@ import styles from "../styles/Home.module.css";
 
 export default function GamePage() {
   const { query } = useRouter();
-  const n = query?.n;
+
+  const n = query.n ? parseInt(query.n as string, 10) : 3;
 
   return (
     <div className={styles.container}>
@@ -16,7 +17,7 @@ export default function GamePage() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <section>
-        <Game />
+        <Game n={n} />
       </section>
     </div>
   );
