@@ -9,7 +9,15 @@ interface Props {
 }
 
 export const Game: React.FC<Props> = ({ n }) => {
-  const { board, playMove } = useGame(n);
+  const { board, playMove, winner } = useGame(n);
+
+  if (winner) {
+    return (
+      <div>
+        <p>{winner} won!</p>
+      </div>
+    );
+  }
 
   return (
     <div>

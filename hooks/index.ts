@@ -30,6 +30,16 @@ export const useCheckWinner = (n: number) => {
       // if not initialise it
       const keys = [`row-${row}`, `col-${col}`];
 
+      // check if up diagonal
+      if (col + row === n - 1) {
+        keys.push("up"); 
+      }
+
+      // check if down diagonal
+      if (col === row) {
+        keys.push("down");
+      }
+
       keys.forEach((key) => {
         if (!newCount[key]) {
           newCount[key] = 0;
