@@ -1,5 +1,5 @@
 import { renderHook, act } from "@testing-library/react-hooks";
-import { useGame } from ".";
+import { useGame, useCheckWinner } from ".";
 
 test("it renders a board of arbitrary size", () => {
   const { result } = renderHook(() => useGame(3));
@@ -30,4 +30,14 @@ test("board correctly resets", () => {
   act(() => result.current.reset());
 
   expect(result.current.board[0][0]).toBe(null);
+});
+
+test("hook can determine winner", () => {
+  const { result } = renderHook(() => useCheckWinner(3));
+
+  act(() => result.current.checkWinner({ row: 0, col: 0, turn: "X" }));
+  act(() => result.current.checkWinner({ row: 0, col: 1, turn: "X" })); 
+  act(() => result.current.checkWinner({ row: 0, col: 2, turn: "X" })); 
+
+  expect(result.current.winner).toBe("X");
 });

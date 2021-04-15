@@ -11,7 +11,7 @@ The value of N is taken as an input from the user before the game round begins
 - [x] create a game page
 - [x] link pages with query string
 - [x] parse query string
-- [ ] allow user input
+- [x] allow user input
 
 ## custom hook
 - [x] creating the board
