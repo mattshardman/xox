@@ -1,4 +1,5 @@
 import React from "react";
+import cx from "classnames";
 
 import styles from "./Board.module.css";
 
@@ -7,14 +8,16 @@ interface CellProps {
 }
 
 export const Cell: React.FC<CellProps> = ({ children, clickHandler }) => {
+  const classnames = children ? [styles.cell, styles.activeCell] : [styles.cell];
+
   return (
-    <div className={styles.cell}>
+    <div className={cx(classnames)}>
+      <div className={styles.item}> {children}</div>
       <button
         className={styles.button}
         disabled={!!children}
         onClick={clickHandler}
       >
-        {children}
       </button>
     </div>
   );

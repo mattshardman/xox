@@ -19,12 +19,14 @@ export const Game: React.FC<Props> = ({ n }) => {
       <div>
         <p className={styles.text}>It's a draw!</p>
         <div className={styles.buttons}>
-          <button className={styles.button}>
-            <Link href="/">Home</Link>
-          </button>
-          <button className={styles.button} onClick={reset}>
-            Reset
-          </button>
+          <div className={styles.buttons}>
+            <Link href="/">
+              <button className={styles.button}>Home</button>
+            </Link>
+            <button className={styles.button} onClick={reset}>
+              Reset
+            </button>
+          </div>
         </div>
       </div>
     );
@@ -35,12 +37,14 @@ export const Game: React.FC<Props> = ({ n }) => {
       <div>
         <p className={styles.text}>{winner} won!</p>
         <div className={styles.buttons}>
-          <button className={styles.button}>
-            <Link href="/">Home</Link>
-          </button>
-          <button className={styles.button} onClick={reset}>
-            Reset
-          </button>
+          <div className={styles.buttons}>
+            <Link href="/">
+              <button className={styles.button}>Home</button>
+            </Link>
+            <button className={styles.button} onClick={reset}>
+              Reset
+            </button>
+          </div>
         </div>
       </div>
     );
@@ -61,9 +65,9 @@ export const Game: React.FC<Props> = ({ n }) => {
         )}
       </Board>
       <div className={styles.buttons}>
-        <button className={styles.button}>
-          <Link href="/">Home</Link>
-        </button>
+        <Link href="/">
+          <button className={styles.button}>Home</button>
+        </Link>
         <button className={styles.button} onClick={reset}>
           Reset
         </button>

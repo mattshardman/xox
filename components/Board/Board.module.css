@@ -1,27 +1,46 @@
 .board {
-    --n: 3;
-    display: grid;
-    grid-template-columns: repeat(var(--n), 1fr);
-    grid-template-rows: repeat(var(--n), 1fr);
-    grid-gap: 8px;
-    height: 500px;
-    width: 500px;
+  --n: 3;
+  display: grid;
+  grid-template-columns: repeat(var(--n), 1fr);
+  grid-template-rows: repeat(var(--n), 1fr);
+  grid-gap: 8px;
+  height: 500px;
+  width: 500px;
+  perspective: 1000px;
 }
 
 .cell {
-    height: 100%;
-    width: 100%; 
+  position: relative;
+  height: 100%;
+  width: 100%;
+  transform: rotateX(180deg);
+  transition: transform 500ms;
+  transform-style: preserve-3d;
+}
+
+.activeCell {
+  transform: rotateX(0deg);
 }
 
 .button {
-    background: #ddd;
-    border: none;
-    font-size: 60px;
-    cursor: pointer;
-    height: 100%;
-    width: 100%; 
+  position: absolute;
+  background: #ddd;
+  border: none;
+  cursor: pointer;
+  height: 100%;
+  width: 100%;
 }
 
-.button:disabled {
-    color: #000;
+.item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  background: #ddd;
+  border: none;
+  font-size: 60px;
+  cursor: pointer;
+  height: 100%;
+  width: 100%;
+  transform: translateZ(1px);
 }
