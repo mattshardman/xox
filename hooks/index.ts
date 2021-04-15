@@ -34,6 +34,11 @@ export const useGame = (n: number) => {
     });
   };
 
+  const reset = () => {
+    const newBoard = createBoard(n);
+    setBoard(newBoard);
+  };
+
   React.useEffect(() => {
     const newBoard = createBoard(n);
     setBoard(newBoard);
@@ -42,6 +47,6 @@ export const useGame = (n: number) => {
   return {
     board,
     playMove,
-    reset: () => {},
+    reset,
   };
 };

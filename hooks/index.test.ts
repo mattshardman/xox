@@ -21,3 +21,13 @@ test("user can interact with board", () => {
   expect(result.current.board[0][0]).toBe("X");
   expect(result.current.board[2][3]).toBe("O");
 });
+
+test("board correctly resets", () => {
+  const { result } = renderHook(() => useGame(3));
+
+  act(() => result.current.playMove({ row: 0, col: 0 }));
+  act(() => result.current.playMove({ row: 2, col: 3 }));
+  act(() => result.current.reset());
+
+  expect(result.current.board[0][0]).toBe(null);
+});
