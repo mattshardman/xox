@@ -1,0 +1,13 @@
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    height: 900px;
+    width: 900px;
+}
+
+.cell {
+    background: yellow;
+    height: 100%;
+    width: 100%; 
+}

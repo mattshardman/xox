@@ -14,8 +14,9 @@ The value of N is taken as an input from the user before the game round begins
 - [ ] allow user input
 
 ## custom hook
-- [ ] creating the board
-- [ ] user interaction with the board
+- [x] creating the board
+- [x] user interaction with the board
+- [x] reset board
 
 ## creating the ui
 - [ ] create board Component
