@@ -102,7 +102,7 @@ export const useGame = (n: number) => {
         return "X";
       });
 
-      return current;
+      return newBoard;
     });
   };
 
