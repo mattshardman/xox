@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import cx from "classnames";
 
 import styles from "./Board.module.css";
@@ -7,8 +7,10 @@ interface CellProps {
   clickHandler: () => void;
 }
 
-export const Cell: React.FC<CellProps> = ({ children, clickHandler }) => {
-  const classnames = children ? [styles.cell, styles.activeCell] : [styles.cell];
+export const Cell: React.FC<CellProps> = memo(({ children, clickHandler }) => {
+  const classnames = children
+    ? [styles.cell, styles.activeCell]
+    : [styles.cell];
 
   return (
     <div className={cx(classnames)}>
@@ -17,11 +19,10 @@ export const Cell: React.FC<CellProps> = ({ children, clickHandler }) => {
         className={styles.button}
         disabled={!!children}
         onClick={clickHandler}
-      >
-      </button>
+      ></button>
     </div>
   );
-};
+});
 
 interface BoardProps {
   n: number;
